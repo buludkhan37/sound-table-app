@@ -1,0 +1,40 @@
+<div class="main">
+  <mat-table [dataSource]="sounds" class="mat-elevation-z8">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Наименование </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- FileName Column -->
+    <ng-container matColumnDef="fileName">
+      <mat-header-cell *matHeaderCellDef> Имя файла </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <!--Angular создаёт переменную row для каждой строки.-->
+    <!--при клике по строке передаём row в метод selectSound. -->
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns;"
+      (click)="selectSound(row)"
+      matTooltip="Нажмите, чтобы открыть проигрыватель"
+      matTooltipPosition="after"
+      style="cursor: pointer;">
+    </mat-row>
+  </mat-table>
+
+<!--  отображаем проигрыватель только если пользователь выбрал строку.-->
+  @if (selectedSound) {
+    <div class="player">
+      <h3>Проигрывается: {{ selectedSound.name }}</h3>
+      <audio  controls [src]="selectedSound.url"></audio>
+    </div>
+  }
+</div>

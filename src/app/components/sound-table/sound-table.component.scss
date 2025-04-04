@@ -1,0 +1,23 @@
+.main {
+  margin: 0 auto;
+  width: 800px;
+  height: 500px;
+}
+
+mat-table {
+  width: 100%;
+  margin-bottom: 20px;
+  box-shadow: 10px 5px 5px 	#808080;
+}
+
+.player {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 140px;
+  border: 1px solid 	#808080;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px 	#808080;
+}
